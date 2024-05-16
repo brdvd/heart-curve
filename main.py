@@ -15,7 +15,7 @@ def printHeart(text):
         line = ''
         for x in range(-25, 25):
             value = evaluateHeartCurve(x / 12, -y / 5)
-            line += '#' if (abs(value - 3) < 0.6) else ' '
+            line += '+' if (abs(value - 3) < 0.6) else ' '
         if (y == -4):
             line = replaceCentered(text, line)
         print(line)
