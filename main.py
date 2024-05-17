@@ -1,4 +1,12 @@
+from argparse import ArgumentParser
 from math import sqrt
+
+
+def parseArgs():
+    parser = ArgumentParser()
+    parser.add_argument("-t", "--text", dest="text",
+                        help="the text displayed inside the heart")
+    return parser.parse_args()
 
 
 def evaluateHeartCurve(x, y):
@@ -6,7 +14,7 @@ def evaluateHeartCurve(x, y):
 
 
 def replaceCentered(text, line):
-    start = (len(line) - len(text)) // 2
+    start = (len(line) - len(text)) // 2 + 1
     return line[0: start] + text + line[start + len(text):]
 
 
@@ -22,4 +30,5 @@ def printHeart(text):
 
 
 if __name__ == "__main__":
-    printHeart('Jonas & Chania')
+    args = parseArgs()
+    printHeart(args.text or "")
